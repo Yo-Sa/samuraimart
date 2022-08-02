@@ -20,7 +20,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendPasswordResetNotification($token) {
         $this->notify(new CustomResetPassword($token));
     }
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -47,4 +47,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function reviews()
+    {
+        return $this->hasMany('App\Review');
+    }
 }
