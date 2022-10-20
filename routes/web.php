@@ -26,6 +26,10 @@ Route::get('users/mypage/favorite', 'UserController@favorite')->name('mypage.fav
 Route::get('users/mypage/password/edit', 'UserController@edit_password')->name('mypage.edit_password');
 Route::put('users/mypage/password', 'UserController@update_password')->name('mypage.update_password');
 Route::delete('users/mypage/delete', 'UserController@destroy')->name('mypage.destroy');
+Route::get('users/mypage/cart_history', 'UserController@cart_history_index')->name('mypage.cart_history');
+Route::get('users/mypage/cart_history/{num}', 'UserController@cart_history_show')->name('mypage.cart_history_show');
+Route::get('users/mypage/register_card', 'UserController@register_card')->name('mypage.register_card');
+Route::post('users/mypage/token', 'UserController@token')->name('mypage.token');
 
 Route::post('products/{product}/reviews', 'ReviewController@store');
 
@@ -44,6 +48,10 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::resource('major_categories', 'Dashboard\MajorCategoryController')->middleware('auth:admins');
     Route::resource('categories', 'Dashboard\CategoryController')->middleware('auth:admins');
     Route::resource('products', 'Dashboard\ProductController')->middleware('auth:admins');
+    Route::resource('users', 'Dashboard\UserController')->middleware('auth:admins');
+    Route::get('orders', 'Dashboard\OrderController@index')->middleware('auth:admins');
+    Route::get('products/import/csv', 'Dashboard\ProductController@import')->name('products.import_csv')->middleware('auth:admins');
+    Route::post('products/import/csv', 'Dashboard\ProductController@import_csv')->middleware('auth:admins');
 });
 
 if (env('APP_ENV') === 'production') {
