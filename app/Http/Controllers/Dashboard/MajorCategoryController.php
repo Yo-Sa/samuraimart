@@ -73,7 +73,7 @@ class MajorCategoryController extends Controller
      * @param  \App\MajorCategory  $majorCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(MajorCategory $majorCategory)
+    public function edit(MajorCategory $major_category)
     {
         return view('dashboard.major_categories.edit', compact('major_category'));
     }

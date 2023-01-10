@@ -1,6 +1,14 @@
 .samuraimart-header-container {
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* padding: 0 40px; */
+    background: #eee;
+    box-sizing: border-box;
+    box-shadow: 0 3px 6px #0000003c; 
+    background-color:rgba(255, 255, 255, 0.8);
 }
 
 .samuraimart-header-search-input {
@@ -178,6 +186,40 @@ label {
 
 .text-favorite {
     color: #0fbe9f;
+}
+
+.py-4 {
+    margin-top: 50px;
+}
+
+.row {
+    margin-top: 50px;
+}
+
+a {
+    position: relative;
+    display: inline-block;
+    transition: .3s;
+}
+
+a::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    content: '';
+    width: 0;
+    height: 2px;
+    background-color: #31aae2;
+    transition: .3s;
+    transform: translateX(-50%);
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:hover::after {
+    width: 100%;
 }
 
 .samuraimart-sidebar-category-label {
